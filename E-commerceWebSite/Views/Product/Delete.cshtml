@@ -1,0 +1,18 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<form method="post" action="/Product/Delete/@Model.Id">
+    <partial name="_DetailsAndDeleteParView" />
+    <script>
+        if (confirm("Are You Sure??")) {
+            document.write('<input type="submit" value="Delete" class="btn btn-danger" />');
+        }
+        else {
+            document.write('<div><a href="/Product/Index" class="btn btn-primary">Back To List</a></div>');
+        }
+    </script>
+</form>

@@ -1,0 +1,34 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData["Success"] != null)
+{
+    <h3 style="color:blue">
+        @TempData["Success"]
+    </h3>
+    TempData.Peek("Success");
+}
+
+<h1>Index</h1>
+
+<a asp-action="New" asp-controller="Product" class="btn btn-outline-primary">New</a>
+
+<div class="card-container">
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="~/Images/@p.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="Name ">Name: @p.Name</h5>
+                    <p class="card-text">Price: @p.Price</p>
+                    <p class="card-text">Quantity: @p.Quantity</p>
+                    <a href="/Product/Edit/@p.Id" class="btn btn-outline-secondary">Edit</a>
+                    <a href="/Product/Details/@p.Id" class="btn btn-outline-info">Details</a>
+                    <a href="/Product/Delete/@p.Id" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

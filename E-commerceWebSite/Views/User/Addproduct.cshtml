@@ -1,0 +1,17 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Addproduct";
+}
+
+<h1>Addproduct</h1>
+
+<form asp-action="Addproduct"  asp-controller="User" method="post">
+    <script>
+        if (confirm("Product Added")) {
+            document.write('<input type="submit" value="Add to cart" class="btn btn-info" />');
+        }
+        else {
+            document.write('<div><a href="/User/products" class="btn btn-primary">Back to list</a></div>');
+        }
+    </script>
+</form>

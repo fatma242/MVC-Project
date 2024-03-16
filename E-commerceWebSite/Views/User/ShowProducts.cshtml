@@ -1,0 +1,29 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "ShowProducts";
+}
+<a href="@Url.Action("Settings", "User", new { id = ViewBag.id, type =  ViewBag.type})" class="btn btn-outline-primary">Manage MyAccount</a>
+
+<h1>ShowProducts</h1>
+
+<a asp-action="New" asp-controller="Product" class="btn btn-outline-primary">New</a>
+
+<div class="card-container">
+    <div class="row">
+        @foreach (var p in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="~/Images/@p.Image" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="Name ">Name: @p.Name</h5>
+                    <p class="card-text">Price: @p.Price</p>
+                    <p class="card-text">Quantity: @p.Quantity</p>
+                    <a href="/Product/Edit/@p.Id" class="btn btn-outline-secondary">Edit</a>
+                    <a href="/Product/Details/@p.Id" class="btn btn-outline-info">Details</a>
+                    <a href="/Product/Delete/@p.Id" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
